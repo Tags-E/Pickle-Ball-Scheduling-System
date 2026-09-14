@@ -8,8 +8,8 @@ Dotenv\Dotenv::createImmutable(dirname(__DIR__))->safeLoad();
 
 header('Content-Type: application/json');
 
-$mongoUri = getenv('MONGODB_URI');
-$mongoDatabase = getenv('MONGODB_DATABASE') ?: 'kitchen_pickleball';
+$mongoUri = $_ENV['MONGODB_URI'] ?? getenv('MONGODB_URI');
+$mongoDatabase = $_ENV['MONGODB_DATABASE'] ?? getenv('MONGODB_DATABASE') ?: 'kitchen_pickleball';
 
 if (!$mongoUri) {
     http_response_code(500);

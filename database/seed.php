@@ -3,8 +3,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 Dotenv\Dotenv::createImmutable(dirname(__DIR__))->safeLoad();
 
-$uri = getenv('MONGODB_URI');
-$database = getenv('MONGODB_DATABASE') ?: 'kitchen_pickleball';
+$uri = $_ENV['MONGODB_URI'] ?? getenv('MONGODB_URI');
+$database = $_ENV['MONGODB_DATABASE'] ?? getenv('MONGODB_DATABASE') ?: 'kitchen_pickleball';
 if (!$uri) {
     fwrite(STDERR, "MONGODB_URI is not configured.\n");
     exit(1);
