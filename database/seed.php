@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+Dotenv\Dotenv::createImmutable(dirname(__DIR__))->safeLoad();
+
 $uri = getenv('MONGODB_URI');
 $database = getenv('MONGODB_DATABASE') ?: 'kitchen_pickleball';
 if (!$uri) {
